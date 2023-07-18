@@ -1,50 +1,64 @@
-# YOLO Object Detection for Ticket Booking Agency
+# Text Recognition with YOLOv3 and Tesseract OCR
 
-This repository contains the code for training and implementing YOLO (You Only Look Once) object detection on ticket images in the context of the Online Ticket Booking Agency application. YOLO is a powerful deep learning-based object detection algorithm that can identify ticket bounding boxes in images, enabling automated ticket verification and processing.
+This repository contains a Python script that performs text recognition from an image using the YOLO (You Only Look Once) model for text detection and Tesseract OCR engine for text recognition. The YOLO model is used to detect text regions in the image, and then Tesseract OCR is applied to recognize the text within those regions.
 
-## Data Preparation
+## Requirements
 
-The code reads ticket images and corresponding ground truth information (bounding box annotations) from the `Data/images/` and `Data/ground_truth/` directories, respectively. It preprocesses the data to create training examples for YOLO.
+Before running the script, ensure you have the following installed:
 
-## Model Training
+- Python 3.x
+- OpenCV (`cv2`) for image processing
+- Tesseract OCR engine with `pytesseract` Python library
+- Pre-trained YOLOv3 model weights (`yolov3.weights`) and configuration file (`yolov3.cfg`)
+- An input image file (e.g., `img.jpg`) for text recognition
 
-The YOLO model is trained using Next.js, TypeScript, and Tailwind CSS. The data is fed into the model to learn ticket object detection based on predefined grid sizes. The model outputs bounding boxes and confidence scores for each ticket detected in an image.
+## Installation
 
-## Running the Application
+1. Clone the repository to your local machine:
 
-To run the ticket booking agency application with YOLO object detection:
+```bash
+git clone https://github.com/your-username/text-recognition-yolo-tesseract.git
+cd text-recognition-yolo-tesseract
+```
 
-1. Clone this repository to your local machine using the following command:
-   ```
-   git clone <repository_url>
-   ```
+2. Install the required Python libraries:
 
-2. Install the required dependencies by running the following command:
-   ```
-   pip install numpy pandas opencv-python tqdm scipy matplotlib
-   ```
+```bash
+pip install opencv-python pytesseract
+```
 
-3. Ensure that you have the necessary ticket images and ground truth data in the correct directories, as described in the code.
+3. Download the YOLOv3 model weights and configuration file from the official YOLO website or the YOLO GitHub repository.
 
-4. Execute the Python script to preprocess the data and train the YOLO model:
-   ```python
-   import numpy as np
-   import pandas as pd
-   import cv2
-   import os
-   import tqdm
-   from scipy.io import loadmat
-   import matplotlib.pyplot as plt
-   ```
+4. Ensure Tesseract OCR is installed on your system. You can download it from: https://github.com/tesseract-ocr/tesseract
 
-5. After training, the application will perform object detection on a few sample ticket images, displaying the processed images with bounding boxes around the tickets.
+## Usage
 
-## Contribution
+1. Place your input image file (e.g., `img.jpg`) in the same directory as the script.
 
-Contributions to this project are welcome. If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+2. Run the script:
+
+```bash
+python text_recognition.py
+```
+
+3. The script will detect text regions in the image using YOLO and display the recognized text on the console. It will also save the output image with text regions highlighted as `output.jpg`.
+
+## Important Notes
+
+- The YOLOv3 weights (`yolov3.weights`) and configuration file (`yolov3.cfg`) are large files and are not included in this repository. Please make sure to download them from the official YOLO website or repository before running the script.
+
+- The `coco.names` file is not required for text recognition, and it is used for object detection tasks with the YOLO model. It is not used in this script.
+
+- The text recognition accuracy heavily depends on the quality of the input image and the performance of the YOLO model and Tesseract OCR. Adjusting the confidence thresholds in the code might be necessary for better results.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This code is provided under the [MIT License](LICENSE).
 
-Thank you for visiting this repository! Get ready to revolutionize the ticket booking experience with YOLO object detection for the Online Ticket Booking Agency.
+Feel free to contribute to the repository or use it for your text recognition projects!
+
+For any questions or issues, please open an [issue](https://github.com/your-username/text-recognition-yolo-tesseract/issues).
+
+---
+
+_Replace `your-username` in the GitHub repository URL with your actual GitHub username._
